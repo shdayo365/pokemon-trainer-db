@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>おなまえ けんさく</title>
+</head>
+<body>
+
+<h1>おなまえ けんさく</h1>
+
+<input id="search" placeholder="名前を入力">
+<button onclick="searchData()">検索</button>
+
+<div id="result"></div>
+
+<script>
+let data = [];
+
+// CSV読み込み
+fetch("data.csv")
+  .then(res => res.text())
+  .then(text => {
+    const rows = text.trim().split("\n");
+    const headers = rows[0].split(",");
+
+    data = rows.slice(1).map(row => {
+      const values = row.split(",");
+      let obj = {};
+      headers.forEach((h, i) => {
+        obj[h] = values[i];
+      });
+      return obj;
+    });
+  });
+
+function searchData() {
+  const keyword = document.getElementById("search").value;
+
+  const result = data.filter(d => d.名前.includes(keyword));
+
+  const div = document.getElementById("result");
+
+  if (result.length === 0) {
+    div.innerHTML = "まだ ないみたい";
+    return;
+  }
+
+  div.innerHTML = result.map(r => `
+    <div style="border:1px solid #ccc; margin:10px; padding:10px;">
+      <b>${r.名前}</b><br>
+      作品: ${r.作品}<br>
+      クラス: ${r.クラス}<br>
+      場所: ${r.場所}<br>
+      手持ち: ${r.手持ち}
+    </div>
+  `).join("");
+}
+</script>
+
+</body>
+</html>
