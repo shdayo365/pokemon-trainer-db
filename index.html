@@ -1,60 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>おなまえ けんさく</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ポケモントレーナー検索</title>
+
+<style>
+body {
+    font-family: sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+input {
+    font-size: 18px;
+    padding: 8px;
+}
+
+button {
+    font-size: 18px;
+    padding: 8px 12px;
+}
+
+#result {
+    margin-top: 30px;
+    line-height: 1.8;
+}
+</style>
 </head>
+
 <body>
 
-<h1>おなまえ けんさく</h1>
+<h1>ポケモントレーナー検索</h1>
 
-<input id="search" placeholder="名前を入力">
-<button onclick="searchData()">検索</button>
+<p>あなたの名前を入力してください</p>
+
+<input id="searchName" type="text">
+<button onclick="searchTrainer()">検索</button>
 
 <div id="result"></div>
 
 <script>
-let data = [];
 
-// CSV読み込み
-fetch("data.csv")
-  .then(res => res.text())
+let trainers = [];
+
+fetch("pokemon-trainer-db.csv")
+  .then(response => response.text())
   .then(text => {
-    const rows = text.trim().split("\n");
-    const headers = rows[0].split(",");
+      const rows = text.trim().split("\n");
 
-    data = rows.slice(1).map(row => {
-      const values = row.split(",");
-      let obj = {};
-      headers.forEach((h, i) => {
-        obj[h] = values[i];
-      });
-      return obj;
-    });
+      const headers = rows[0].split(",");
+
+      for(let i = 1; i < rows.length; i++) {
+          const values = rows[i].split(",");
+
+          let obj = {};
+
+          headers.forEach((header, index) => {
+              obj[header.trim()] = values[index] || "";
+          });
+
+          trainers.push(obj);
+      }
   });
 
-function searchData() {
-  const keyword = document.getElementById("search").value;
-
-  const result = data.filter(d => d.名前.includes(keyword));
-
-  const div = document.getElementById("result");
-
-  if (result.length === 0) {
-    div.innerHTML = "まだ ないみたい";
-    return;
-  }
-
-  div.innerHTML = result.map(r => `
-    <div style="border:1px solid #ccc; margin:10px; padding:10px;">
-      <b>${r.名前}</b><br>
-      作品: ${r.作品}<br>
-      クラス: ${r.クラス}<br>
-      場所: ${r.場所}<br>
-      手持ち: ${r.手持ち}
-    </div>
-  `).join("");
+function hiraToKata(str) {
+    return str.replace(/[\u3041-\u3096]/g, function(match) {
+        return String.fromCharCode(match.charCodeAt(0) + 0x60);
+    });
 }
+
+function searchTrainer() {
+
+    const input = document.getElementById("searchName").value.trim();
+
+    const searchName = hiraToKata(input);
+
+    const trainer = trainers.find(t => t["名前"] === searchName);
+
+    const result = document.getElementById("result");
+
+    if (!trainer) {
+        result.innerHTML = "あなたの名前のトレーナーは見つかりませんでした。";
+        return;
+    }
+
+    let pokemonList = "";
+
+    for(let i = 1; i <= 6; i++) {
+        const pokemon = trainer[`手持ち${i}`] || trainer[`手持ち${i} `] || trainer[`手持ち${i}　`];
+
+        if(pokemon){
+            pokemonList += `・${pokemon}<br>`;
+        }
+    }
+
+    let giftText = "";
+
+    if(trainer["くれるもの"]){
+        giftText = `<p>${trainer["くれるもの"]} をくれるよ！</p>`;
+    }
+
+    result.innerHTML = `
+        <h2>あなたの名前は ${trainer["シリーズ"]} に登場します！</h2>
+
+        <p>${trainer["肩書き"]} の ${trainer["名前"]}</p>
+
+        <h3>手持ち</h3>
+
+        ${pokemonList}
+
+        ${giftText}
+    `;
+}
+
 </script>
 
 </body>
