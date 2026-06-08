@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ポケモントレーナー検索</title>
+<title>キミもポケモントレーナー？</title>
 
 <style>
 body {
@@ -32,12 +32,12 @@ button {
 
 <body>
 
-<h1>ポケモントレーナー検索</h1>
+<h1>キミもポケモントレーナー！</h1>
 
-<p>あなたの名前を入力してください</p>
+<p>あなたの名前を入れてください</p>
 
 <input id="searchName" type="text">
-<button onclick="searchTrainer()">検索</button>
+<button onclick="searchTrainer()">さがす</button>
 
 <div id="result"></div>
 
@@ -82,7 +82,7 @@ function searchTrainer() {
     const result = document.getElementById("result");
 
     if (!trainer) {
-        result.innerHTML = "あなたの名前のトレーナーは見つかりませんでした。";
+        result.innerHTML = "まだいないみたい";
         return;
     }
 
@@ -103,7 +103,7 @@ function searchTrainer() {
     }
 
     result.innerHTML = `
-        <h2>あなたの名前は ${trainer["シリーズ"]} に登場します！</h2>
+        <h2> ${trainer["シリーズ"]} に登場します！</h2>
 
         <p>${trainer["肩書き"]} の ${trainer["名前"]}</p>
 
