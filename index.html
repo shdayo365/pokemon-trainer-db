@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>キミもポケモントレーナー？</title>
+<title>キミはポケモントレーナー？</title>
 
 <style>
 body {
@@ -32,7 +32,7 @@ button {
 
 <body>
 
-<h1>キミもポケモントレーナー！</h1>
+<h1>キミはポケモントレーナー？</h1>
 
 <p>あなたの名前を入れてください</p>
 
@@ -99,15 +99,27 @@ function searchTrainer() {
     let giftText = "";
 
     if(trainer["くれるもの"]){
-        giftText = `<p>${trainer["くれるもの"]} をくれるよ！</p>`;
+        giftText = `<p>${trainer["くれるもの"]} をくれるよ</p>`;
     }
 
     result.innerHTML = `
-        <h2> ${trainer["シリーズ"]} に登場します！</h2>
+        </p> ${trainer["シリーズ"]} に登場するよ！</p>
 
-        <p>${trainer["肩書き"]} の ${trainer["名前"]}</p>
+        <h2>${trainer["肩書き"]} の ${trainer["名前"]}<h2>
 
+        let pokemonSection = "";
+
+        ${pokemonSection}
+
+    ${giftText}
+`;
+
+if (pokemonList) {
+    pokemonSection = `
         <h3>手持ち</h3>
+        ${pokemonList}
+    `;
+}
 
         ${pokemonList}
 
