@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>キミはポケモントレーナー？</title>
+<title>ポケモントレーナー検索</title>
 
 <style>
 body {
@@ -103,19 +103,12 @@ function searchTrainer() {
     }
 
     result.innerHTML = `
-        </p> ${trainer["シリーズ"]} に登場するよ！</p>
-
-        <h2>${trainer["肩書き"]} の ${trainer["名前"]}<h2>
-
-        let pokemonSection = "";
+    
+        <p>${trainer["シリーズ"]} に登場します！</p>
         
+        <h2> ${trainer["肩書き"]} の ${trainer["名前"]}</h2>
 
-if (pokemonList) {
-    pokemonSection = `
-        <p>手持ち<p>
-        ${pokemonList}
-    `;
-}
+        <p>手持ち</p>
 
         ${pokemonList}
 
