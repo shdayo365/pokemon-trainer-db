@@ -42,7 +42,7 @@ button {
 <input
   id="searchName"
   type="text"
-  onkeydown="if(event.key==='Enter') searchTrainer()"
+  onkeydown="if(event.key==='Enter' && !event.isComposing) searchTrainer()"
 >
 <button onclick="searchTrainer()">さがす</button>
 
