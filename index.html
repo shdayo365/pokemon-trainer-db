@@ -86,24 +86,62 @@ function searchTrainer() {
         return;
     }
 
-    let pokemonSection = "";
+let pokemonList = "";
 
-    if (pokemonList) {
+for(let i = 1; i <= 6; i++) {
+    const pokemon = trainer[`手持ち${i}`] || trainer[`手持ち${i} `] || trainer[`手持ち${i}　`];
+
+    if(pokemon){
+        pokemonList += `・${pokemon}<br>`;
+    }
+}
+
+let pokemonSection = "";
+
+if (pokemonList) {
     pokemonSection = `
         <h3>手持ち</h3>
         ${pokemonList}
     `;
 }
 
-    let pokemonList = "";
+let giftText = "";
 
-    for(let i = 1; i <= 6; i++) {
-        const pokemon = trainer[`手持ち${i}`] || trainer[`手持ち${i} `] || trainer[`手持ち${i}　`];
-
-        if(pokemon){
-            pokemonList += `・${pokemon}<br>`;
-        }
+    if(trainer["くれるもの"]){
+        giftText = `<p>${trainer["くれるもの"]} をくれるよ</p>`;
     }
+
+    result.innerHTML = `
+    
+        <p>${trainer["地方"]} にいます！</p>
+        
+        <h2> ${trainer["肩書き"]} の ${trainer["名前"]}</h2>
+
+        ${pokemonSection}
+
+        ${giftText}
+    `;
+}
+
+    
+    let giftText = "";
+
+    if(trainer["くれるもの"]){
+        giftText = `<p>${trainer["くれるもの"]} をくれるよ</p>`;
+    }
+
+    result.innerHTML = `
+    
+        <p>${trainer["地方"]} にいます！</p>
+        
+        <h2> ${trainer["肩書き"]} の ${trainer["名前"]}</h2>
+
+        ${pokemonSection}
+
+        ${giftText}
+    `;
+}
+
     
     let giftText = "";
 
