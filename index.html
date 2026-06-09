@@ -36,7 +36,11 @@ button {
 
 <p>あなたの名前を入れてください</p>
 
-<input id="searchName" type="text">
+<input
+  id="searchName"
+  type="text"
+  onkeydown="if(event.key==='Enter') searchTrainer()"
+>
 <button onclick="searchTrainer()">さがす</button>
 
 <div id="result"></div>
