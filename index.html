@@ -102,7 +102,7 @@ ${pokemon}<br>
 let pokemonSection = "";
 if (pokemonList) {
     pokemonSection = `
-        <p>手持ち</p>
+        <p style="margin-bottom:0;">手持ち</p>
         ${pokemonList}
     `;
 }
@@ -114,6 +114,7 @@ if (pokemonList) {
     }
 
     result.innerHTML = `
+
     
         <p>${trainer["地方"]} にいます！</p>
         
