@@ -86,6 +86,15 @@ function searchTrainer() {
         return;
     }
 
+    let pokemonSection = "";
+
+    if (pokemonList) {
+    pokemonSection = `
+        <h3>手持ち</h3>
+        ${pokemonList}
+    `;
+}
+
     let pokemonList = "";
 
     for(let i = 1; i <= 6; i++) {
@@ -95,7 +104,7 @@ function searchTrainer() {
             pokemonList += `・${pokemon}<br>`;
         }
     }
-
+    
     let giftText = "";
 
     if(trainer["くれるもの"]){
@@ -104,13 +113,11 @@ function searchTrainer() {
 
     result.innerHTML = `
     
-        <p>${trainer["シリーズ"]} に登場します！</p>
+        <p>${trainer["地方"]} にいます！</p>
         
         <h2> ${trainer["肩書き"]} の ${trainer["名前"]}</h2>
 
-        <p>手持ち</p>
-
-        ${pokemonList}
+        ${pokemonSection}
 
         ${giftText}
     `;
