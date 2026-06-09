@@ -104,44 +104,6 @@ if (pokemonList) {
         ${pokemonList}
     `;
 }
-
-let giftText = "";
-
-    if(trainer["くれるもの"]){
-        giftText = `<p>${trainer["くれるもの"]} をくれるよ</p>`;
-    }
-
-    result.innerHTML = `
-    
-        <p>${trainer["地方"]} にいます！</p>
-        
-        <h2> ${trainer["肩書き"]} の ${trainer["名前"]}</h2>
-
-        ${pokemonSection}
-
-        ${giftText}
-    `;
-}
-
-    
-    let giftText = "";
-
-    if(trainer["くれるもの"]){
-        giftText = `<p>${trainer["くれるもの"]} をくれるよ</p>`;
-    }
-
-    result.innerHTML = `
-    
-        <p>${trainer["地方"]} にいます！</p>
-        
-        <h2> ${trainer["肩書き"]} の ${trainer["名前"]}</h2>
-
-        ${pokemonSection}
-
-        ${giftText}
-    `;
-}
-
     
     let giftText = "";
 
