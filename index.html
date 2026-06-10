@@ -42,7 +42,7 @@ button {
 <input
   id="searchName"
   type="text"
-  onkeydown="if(event.key==='Enter' && !event.isComposing) searchTrainer()"
+  onkeydown="handleKey(event)"
 >
 <button onclick="searchTrainer()">さがす</button>
 
@@ -78,6 +78,12 @@ function hiraToKata(str) {
     });
 }
 
+    function handleKey(event) {
+    if (event.key === "Enter" && !event.isComposing) {
+        searchTrainer();
+    }
+}
+    
 function searchTrainer() {
 
     const input = document.getElementById("searchName").value.trim();
