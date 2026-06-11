@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img
+    src="images/trainers/${trainer["画像ファイル"]}"
+    width="200"
+    style="display:block;margin:10px auto;"
+    onerror="this.style.display='none'"
+>
 <title>ポケモントレーナー検索</title>
 
 <style>
@@ -78,7 +84,13 @@ function hiraToKata(str) {
     });
 }
 
-    !event.isComposing
+    function handleKey(event) {
+    if (event.keyCode === 229) return;
+
+    if (event.key === "Enter") {
+        searchTrainer();
+    }
+}
     
     
 function searchTrainer() {
@@ -125,27 +137,21 @@ if (pokemonList) {
 
     result.innerHTML = `
 
-    
-        <p>${trainer["地方"]} にいます！</p>
-        
-        <div style="display:flex;align-items:center;gap:20px;">
 
-<img
-  src="images/trainers/${trainer["画像ファイル"]}"
-  width="120"
-  onerror="this.style.display='none'"
->
+    <p>${trainer["地方"]} にいます！</p>
 
-<div>
-  <h2>${trainer["肩書き"]} の ${trainer["名前"]}</h2>
-</div>
+    <h2>${trainer["肩書き"]} の ${trainer["名前"]}</h2>
 
-</div>
+    <img
+        src="images/trainers/${trainer["画像ファイル"]}"
+        width="200"
+        onerror="this.style.display='none'"
+    >
 
-        ${pokemonSection}
+    ${pokemonSection}
 
-        ${giftText}
-    `;
+    ${giftText}
+`;
 }
 
 </script>
