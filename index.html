@@ -131,7 +131,19 @@ if (pokemonList) {
     
         <p>${trainer["地方"]} にいます！</p>
         
-        <h2> ${trainer["肩書き"]} の ${trainer["名前"]}</h2>
+        <div style="display:flex;align-items:center;gap:20px;">
+
+<img
+  src="images/${trainer["画像ファイル"]}"
+  width="120"
+  onerror="this.style.display='none'"
+>
+
+<div>
+  <h2>${trainer["肩書き"]} の ${trainer["名前"]}</h2>
+</div>
+
+</div>
 
         ${pokemonSection}
 
@@ -145,7 +157,7 @@ if (pokemonList) {
 
 <footer style="margin-top:50px;font-size:10px;color:gray;text-algin:center;">
 
-  <p>最終更新日：2026/06/09　登録トレーナー：195人</p>
+  <p>最終更新日：2026/06/09　登録トレーナー：215人</p>
   <p>作成：2026 shdayo365</p>
   <p>
     このサイトは個人が運営する非公式ファンサイトです<br>
