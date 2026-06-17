@@ -99,43 +99,67 @@ function searchTrainer() {
 
     const searchName = hiraToKata(input);
 
-    const trainer = trainers.find(t => t["名前"] === searchName);
+    const matchedTrainers = trainers.filter(t => t["名前"] === searchName);
 
     const result = document.getElementById("result");
 
-    if (!trainer) {
-        result.innerHTML = "まだいないみたい";
-        return;
-    }
+    if (matchedTrainers.length === 0) {
+    result.innerHTML = "まだいないみたい";
+    return;
+}
 
-let pokemonList = "";
+let html = "";
 
-for(let i = 1; i <= 6; i++) {
-    const pokemon = trainer[`手持ち${i}`] || trainer[`手持ち${i} `] || trainer[`手持ち${i}　`];
+matchedTrainers.forEach(trainer => {
 
-    if(pokemon){
-        pokemonList += `
+    let pokemonList = "";
+
+    for(let i = 1; i <= 6; i++) {
+        const pokemon = trainer[`手持ち${i}`] || trainer[`手持ち${i} `] || trainer[`手持ち${i}　`];
+
+        if(pokemon){
+            pokemonList += `
 <img src="images/monsterball.png" width="16" style="vertical-align:middle;">
 ${pokemon}<br>
 `;
+        }
     }
-}
 
-let pokemonSection = "";
-if (pokemonList) {
-    pokemonSection = `
-        <p style="margin-bottom:0;">手持ち</p>
-        ${pokemonList}
-    `;
-}
-    
+    let pokemonSection = "";
+
+    if (pokemonList) {
+        pokemonSection = `
+            <p style="margin-bottom:0;">手持ち</p>
+            ${pokemonList}
+        `;
+    }
+
     let giftText = "";
 
     if(trainer["くれるもの"]){
         giftText = `<p>${trainer["くれるもの"]} をくれるよ</p>`;
     }
 
-    result.innerHTML = `
+    html += `
+        <hr>
+
+        <p>${trainer["地方"]} にいます！</p>
+
+        <h2>${trainer["肩書き"]} の ${trainer["名前"]}</h2>
+
+        <img
+            src="images/trainers/${trainer["画像ファイル"]}"
+            width="200"
+            onerror="this.style.display='none'"
+        >
+
+        ${pokemonSection}
+
+        ${giftText}
+    `;
+});
+
+result.innerHTML = html;
 
 
     <p>${trainer["地方"]} にいます！</p>
@@ -160,7 +184,7 @@ if (pokemonList) {
 
 <footer style="margin-top:50px;font-size:10px;color:gray;text-align:center;">
 
-  <p>最終更新日：2026/06/14　登録トレーナー：339人</p>
+  <p>最終更新日：2026/06/17　登録トレーナー：339人</p>
   <p>
   作成：
   <a href="https://github.com/shdayo365" target="_blank">
