@@ -75,6 +75,10 @@ button {
     vertical-align:middle;
     margin-right:5px;
 }
+
+.trainer-name{
+    margin-bottom:15px;
+}
 </style>
 </head>
 
@@ -193,26 +197,28 @@ ${pokemon}<br>
             src="images/series/${trainer["シリーズ"]}.png"
             class="series-icon"
         >
-        ${trainer["地方"]}で会えるよ！
+        ${trainer["地方"]}にいるよ！
     </div>
+
+    <div class="trainer-card">
+
+    <h2 class="trainer-name">
+        ${trainer["肩書き"]} の ${trainer["名前"]}
+    </h2>
 
     <div class="trainer-main">
 
         <div class="trainer-left">
-
-            <img
-                src="images/trainers/${trainer["画像ファイル"]}"
-                class="trainer-image"
-                onerror="this.style.display='none'"
-            >
-
-            <h2>
-                ${trainer["肩書き"]} の ${trainer["名前"]}
-            </h2>
-
+            <img ...>
         </div>
 
         <div class="trainer-right">
+            ${pokemonSection}
+        </div>
+
+    </div>
+
+</div>
 
             ${pokemonSection}
 
