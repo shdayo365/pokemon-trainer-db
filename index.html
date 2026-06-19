@@ -193,10 +193,7 @@ ${pokemon}<br>
 <div class="trainer-card">
 
     <div class="location">
-        <img
-            src="images/series/${trainer["シリーズ"]}.png"
-            class="series-icon"
-        >
+        
         ${trainer["地方"]}にいるよ！
     </div>
 
@@ -209,12 +206,12 @@ ${pokemon}<br>
     <div class="trainer-main">
 
         <div class="trainer-left">
-            <img
-    src="images/series/${Series["シリーズアイコン"]}"
-    class="trainer-image"
-    onerror="this.style.display='none'"
->
-        </div>
+    <img
+        src="images/trainers/${trainer["画像ファイル"]}"
+        class="trainer-image"
+        onerror="this.style.display='none'"
+    >
+</div>
 
         <div class="trainer-right">
             ${pokemonSection}
