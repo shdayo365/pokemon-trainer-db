@@ -19,7 +19,7 @@ body {
     margin: 40px auto;
     padding: 20px;
 
-    background-image: url("images/bg-ball.png");
+    background-image: url("images/ui/bg-ball.png");
     background-repeat: repeat;
 }
 
@@ -168,7 +168,7 @@ matchedTrainers.forEach(trainer => {
 
         if(pokemon){
             pokemonList += `
-<img src="images/monsterball.png" width="16" style="vertical-align:middle;">
+<img src="images/ui/monsterball.png" width="16" style="vertical-align:middle;">
 ${pokemon}<br>
 `;
         }
@@ -194,7 +194,7 @@ ${pokemon}<br>
 
     <div class="location">
         <img
-            src="images/series/${trainer["シリーズ"]}.png"
+            src="images/series/${series["シリーズアインコン"]}.png"
             class="series-icon"
         >
         ${trainer["地方"]}にいるよ！
@@ -220,7 +220,6 @@ ${pokemon}<br>
 
 </div>
 
-            ${pokemonSection}
 
         </div>
 
