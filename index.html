@@ -12,6 +12,7 @@
 <title>ポケモントレーナー検索</title>
 
 <style>
+    /* CSSのコメントはこれ */
 body {
     font-family: sans-serif;
     max-width: 800px;
@@ -36,6 +37,44 @@ button {
     margin-top: 30px;
     line-height: 1.8;
 }
+
+    /* ここからトレーナーカード用 */
+.trainer-card{
+    border:1px solid #ccc;
+    border-radius:12px;
+    padding:20px;
+    margin:20px 0;
+}
+
+.trainer-main{
+    display:flex;
+    gap:30px;
+    align-items:flex-start;
+}
+
+.trainer-left{
+    width:220px;
+    text-align:center;
+}
+
+.trainer-right{
+    flex:1;
+}
+
+.trainer-image{
+    width:200px;
+}
+
+.location{
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.series-icon{
+    width:24px;
+    vertical-align:middle;
+    margin-right:5px;
+}
 </style>
 </head>
 
@@ -55,6 +94,12 @@ button {
 <div id="result"></div>
 
 <script>
+    // JavaScriptのコメント1行はこれ
+/*
+複数行コメントはこれ
+コメントというかコードの無効化に使えるよ
+なるほど
+*/
 
 let trainers = [];
 
@@ -141,34 +186,56 @@ ${pokemon}<br>
     }
 
         html += `
-        <hr>
+<div class="trainer-card">
 
-        <p>${trainer["地方"]} にいます！</p>
-
-        <h2>${trainer["肩書き"]} の ${trainer["名前"]}</h2>
-
+    <div class="location">
         <img
-            src="images/trainers/${trainer["画像ファイル"]}"
-            width="200"
-            onerror="this.style.display='none'"
+            src="images/series/${trainer["シリーズ"]}.png"
+            class="series-icon"
         >
+        ${trainer["地方"]}で会えるよ！
+    </div>
 
-        ${pokemonSection}
+    <div class="trainer-main">
 
-        ${giftText}
-    `;
+        <div class="trainer-left">
+
+            <img
+                src="images/trainers/${trainer["画像ファイル"]}"
+                class="trainer-image"
+                onerror="this.style.display='none'"
+            >
+
+            <h2>
+                ${trainer["肩書き"]} の ${trainer["名前"]}
+            </h2>
+
+        </div>
+
+        <div class="trainer-right">
+
+            ${pokemonSection}
+
+        </div>
+
+    </div>
+
+    ${giftText}
+
+</div>
+`;
 });
 
 result.innerHTML = html;
 }
 
 </script>
-
+    <!-- htmlのコメントはこれ -->
     <hr>
 
 <footer style="margin-top:50px;font-size:10px;color:gray;text-align:center;">
 
-  <p>最終更新日：2026/06/17　登録トレーナー：469人</p>
+  <p>最終更新日：2026/06/19　登録トレーナー：469人</p>
   <p>
   作成：
   <a href="https://github.com/shdayo365" target="_blank">
