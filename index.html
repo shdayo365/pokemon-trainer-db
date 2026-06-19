@@ -194,13 +194,13 @@ ${pokemon}<br>
 
     <div class="location">
         <img
-            src="images/series/${series["シリーズアインコン"]}.png"
+            src="images/series/${trainer["シリーズ"]}.png"
             class="series-icon"
         >
         ${trainer["地方"]}にいるよ！
     </div>
 
-    <div class="trainer-card">
+    <div class="trainer-main">
 
     <h2 class="trainer-name">
         ${trainer["肩書き"]} の ${trainer["名前"]}
@@ -209,7 +209,11 @@ ${pokemon}<br>
     <div class="trainer-main">
 
         <div class="trainer-left">
-            <img ...>
+            <img
+    src="images/series/${Series["シリーズアイコン"]}"
+    class="trainer-image"
+    onerror="this.style.display='none'"
+>
         </div>
 
         <div class="trainer-right">
@@ -219,11 +223,6 @@ ${pokemon}<br>
     </div>
 
 </div>
-
-
-        </div>
-
-    </div>
 
     ${giftText}
 
