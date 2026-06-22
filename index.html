@@ -127,6 +127,29 @@ fetch("pokemon-trainer-db.csv")
       }
   });
 
+let seriesData = [];
+    
+    fetch("pokemon-Series.csv")
+  .then(response => response.text())
+  .then(text => {
+
+      const rows = text.trim().split("\n");
+      const headers = rows[0].split(",");
+
+      for(let i = 1; i < rows.length; i++) {
+
+          const values = rows[i].split(",");
+
+          let obj = {};
+
+          headers.forEach((header, index) => {
+              obj[header.trim()] = values[index] || "";
+          });
+
+          seriesData.push(obj);
+      }
+  });
+
 function hiraToKata(str) {
     return str.replace(/[\u3041-\u3096]/g, function(match) {
         return String.fromCharCode(match.charCodeAt(0) + 0x60);
@@ -155,11 +178,25 @@ function searchTrainer() {
     if (matchedTrainers.length === 0) {
     result.innerHTML = "まだいないみたい";
     return;
-}
+}    
 
 let html = "";
 
 matchedTrainers.forEach(trainer => {
+
+    const seriesInfo = seriesData.find(
+    s => s["シリーズ"] === trainer["シリーズ"]
+);
+
+    const seriesIcon = seriesInfo
+    ? seriesInfo["シリーズアイコン"]
+    : "";
+
+    <img
+    src="images/series/${seriesIcon}"
+    class="series-icon"
+    onerror="this.style.display='none'"
+>
 
     let pokemonList = "";
 
@@ -236,7 +273,7 @@ result.innerHTML = html;
 
 <footer style="margin-top:50px;font-size:10px;color:gray;text-align:center;">
 
-  <p>最終更新日：2026/06/19　登録トレーナー：525人</p>
+  <p>最終更新日：2026/06/20　登録トレーナー：525人</p>
   <p>
   作成：
   <a href="https://github.com/shdayo365" target="_blank">
