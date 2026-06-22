@@ -3,12 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <img
-    src="images/trainers/${trainer["画像ファイル"]}"
-    width="200"
-    style="display:block;margin:10px auto;"
-    onerror="this.style.display='none'"
->
+   
 <title>ポケモントレーナー検索</title>
 
 <style>
@@ -192,12 +187,6 @@ matchedTrainers.forEach(trainer => {
     ? seriesInfo["シリーズアイコン"]
     : "";
 
-    <img
-    src="images/series/${seriesIcon}"
-    class="series-icon"
-    onerror="this.style.display='none'"
->
-
     let pokemonList = "";
 
     for(let i = 1; i <= 6; i++) {
@@ -230,8 +219,15 @@ ${pokemon}<br>
 <div class="trainer-card">
 
     <div class="location">
-        
+
+      <img
+    src="images/series/${seriesIcon}"
+    class="series-icon"
+    onerror="this.style.display='none'"
+>
+
         ${trainer["地方"]}にいるよ！
+        
     </div>
 
     <div class="trainer-main">
@@ -273,7 +269,7 @@ result.innerHTML = html;
 
 <footer style="margin-top:50px;font-size:10px;color:gray;text-align:center;">
 
-  <p>最終更新日：2026/06/20　登録トレーナー：525人</p>
+  <p>最終更新日：2026/06/21　登録トレーナー：525人</p>
   <p>
   作成：
   <a href="https://github.com/shdayo365" target="_blank">
