@@ -223,18 +223,6 @@ ${pokemon}<br>
 
     <div class="location">
 
-      <img
-    src="images/series/${seriesIcon}"
-    class="series-icon"
-    onerror="this.style.display='none'"
->
-
-        ${trainer["地方"]}にいるよ！
-        
-    </div>
-
-    <div class="trainer-main">
-
     <h2 class="trainer-name">
         ${trainer["肩書き"]} の ${trainer["名前"]}
     </h2>
@@ -255,6 +243,15 @@ ${pokemon}<br>
 
     </div>
 
+ <img
+    src="images/series/${seriesIcon}"
+    class="series-icon"
+    onerror="this.style.display='none'"
+>
+        ${trainer["地方"]}の${trainer["会える場所"]}にいるよ
+        
+    </div>
+
 </div>
 
     ${giftText}
@@ -272,7 +269,7 @@ result.innerHTML = html;
 
 <footer style="margin-top:50px;font-size:10px;color:gray;text-align:center;">
 
-  <p>最終更新日：2026/06/21　登録トレーナー：525人</p>
+  <p>最終更新日：2026/06/22　登録トレーナー：525人</p>
   <p>
   作成：
   <a href="https://github.com/shdayo365" target="_blank">
