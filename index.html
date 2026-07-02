@@ -6,6 +6,8 @@
    
 <title>ポケモントレーナー検索</title>
 
+<link rel="icon" type="image/png" href="images/ui/favicon.png">
+
 <style>
     /* CSSのコメントはこれ */
 body {
@@ -91,6 +93,10 @@ button {
     margin-bottom:15px;
 }
 
+.mobile-break{
+    display:inline;
+}
+
 @media (max-width: 600px){
 
     .trainer-main{
@@ -114,6 +120,10 @@ button {
     .trainer-name{
         font-size: 18px;
     }
+
+   .mobile-break{
+    display:block;
+   }
 
 }
    
@@ -314,7 +324,7 @@ result.innerHTML = html;
 
 <footer style="margin-top:50px;font-size:10px;color:gray;text-align:center;">
 
-  <p>最終更新日：2026/06/29　登録トレーナー：825人</p>
+  <p>最終更新日：2026/07/02　登録トレーナー：825人</p>
   <p>
   作成：
   <a href="https://github.com/shdayo365" target="_blank">
