@@ -222,6 +222,12 @@ function searchTrainer() {
 
     const matchedTrainers = trainers.filter(t => t["名前"] === searchName);
 
+   matchedTrainers.sort((a, b) => {
+    return a["シリーズ番号"].localeCompare(b["シリーズ番号"], undefined, {
+        numeric: true
+    });
+});
+   
     const result = document.getElementById("result");
 
     if (matchedTrainers.length === 0) {
