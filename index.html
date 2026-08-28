@@ -280,6 +280,18 @@ ${pokemon}<br>
 
     <div class="location">
 
+    <div class="location">
+ <img
+    src="images/series/${seriesIcon}"
+    class="series-icon"
+    onerror="this.style.display='none'"
+>
+        ${trainer["地方"]}
+        <span class="mobile-break">
+        ${trainer["会える場所"]}にいるよ！
+        </span>
+</div>
+
     <h2 class="trainer-name">
         ${trainer["肩書き"]} の ${trainer["名前"]}
     </h2>
@@ -299,18 +311,6 @@ ${pokemon}<br>
         </div>
 
     </div>
-
-<div class="location">
- <img
-    src="images/series/${seriesIcon}"
-    class="series-icon"
-    onerror="this.style.display='none'"
->
-        ${trainer["地方"]}
-        <span class="mobile-break">
-        ${trainer["会える場所"]}にいるよ！
-        </span>
-</div>
 
    </div>
 
