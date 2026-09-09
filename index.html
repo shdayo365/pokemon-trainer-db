@@ -233,9 +233,7 @@ function searchTrainer() {
     const matchedTrainers = trainers.filter(t => t["名前"] === searchName);
 
    matchedTrainers.sort((a, b) => {
-    return a["表示順"].localeCompare(b["表示順"], undefined, {
-        numeric: true
-    });
+    return Number(a["表示順"]) - Number(b["表示順"]);
 });
    
     const result = document.getElementById("result");
