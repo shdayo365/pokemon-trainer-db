@@ -46,6 +46,18 @@ button {
     line-height: 1.8;
 }
 
+#backToTop {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+}
+
     /* ここからトレーナーカード用 */
 
    /*　角丸枠
@@ -111,22 +123,23 @@ button {
 @media (max-width: 600px){
 
     .trainer-main{
-        flex-direction: column;
-        align-items: left;
+        flex-direction: row;
+        align-items: flex-start;
     }
 
     .trainer-left{
-        width: 100%;
+        width: 150px;
+        flex-shrink: 0;
     }
 
     .trainer-right{
-        width: 100%;
+        flex: 1;
+        width: auto;
         text-align: left;
     }
 
     .trainer-image{            
         width:150px;
-       align-items: left;
     }
 
     .trainer-name{
@@ -156,6 +169,8 @@ button {
 <button onclick="searchTrainer()">さがす</button>
 
 <div id="result"></div>
+   
+<button id="backToTop">↑ 上へ</button>
 
 <script>
     // JavaScriptのコメント1行はこれ
@@ -334,13 +349,20 @@ ${pokemon}<br>
 result.innerHTML = html;
 }
 
+document.getElementById("backToTop").addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
 </script>
     <!-- htmlのコメントはこれ -->
     <hr>
 
 <footer style="margin-top:50px;font-size:10px;color:gray;text-align:center;">
 
-  <p>最終更新日：2026/09/17　登録トレーナー：2995人</p>
+  <p>最終更新日：2026/09/18　登録トレーナー：2995人</p>
   <p>
   作成：
   <a href="https://github.com/shdayo365" target="_blank">
