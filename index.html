@@ -185,7 +185,11 @@ button {
 <p>あなたの名前を入れてください</p>
 
 <div class="search-box">
-    <input id="searchName">
+    <input
+  id="searchName"
+  type="text"
+  onkeydown="handleKey(event)"
+>
     <button class="clear-button" onclick="clearSearch()">×</button>
 </div>
 
