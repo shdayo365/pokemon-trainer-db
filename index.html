@@ -167,6 +167,7 @@ button {
   onkeydown="handleKey(event)"
 >
 <button onclick="searchTrainer()">さがす</button>
+<button onclick="clearSearch()">×</button>
 
 <div id="result"></div>
    
@@ -231,6 +232,10 @@ function hiraToKata(str) {
     });
 }
 
+function clearSearch() {
+    document.getElementById("searchName").value = "";
+}
+   
     function handleKey(event) {
     if (event.keyCode === 229) return;
 
@@ -362,7 +367,7 @@ document.getElementById("backToTop").addEventListener("click", function() {
 
 <footer style="margin-top:50px;font-size:10px;color:gray;text-align:center;">
 
-  <p>最終更新日：2026/09/29　登録トレーナー：3980人</p>
+  <p>最終更新日：2026/09/30　登録トレーナー：3980人</p>
   <p>
   作成：
   <a href="https://github.com/shdayo365" target="_blank">
@@ -374,11 +379,9 @@ document.getElementById("backToTop").addEventListener("click", function() {
     <a href="https://wiki.pokemonwiki.com/wiki/メインページ" target="_blank">
         ポケモンWiki
     </a>
-    ／ポケモンWikiの内容は
-    <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja" target="_blank">
-        CC BY-NC-SA 3.0
-    </a>
-    のライセンスに基づいて利用しています
+   <a>
+    ／ポケモンWikiの内容はCC BY-NC-SA 3.0のライセンスに基づいて利用しています
+   </a>
 </p>
    
 <p>
