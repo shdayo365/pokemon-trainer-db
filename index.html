@@ -58,6 +58,29 @@ button {
     cursor: pointer;
 }
 
+.search-box {
+    position: relative;
+    display: inline-block;
+}
+
+.search-box input {
+    padding-right: 35px;
+}
+
+.clear-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+}
+
     /* ここからトレーナーカード用 */
 
    /*　角丸枠
@@ -161,14 +184,12 @@ button {
 
 <p>あなたの名前を入れてください</p>
 
-<input
-  id="searchName"
-  type="text"
-  onkeydown="handleKey(event)"
->
-<button onclick="searchTrainer()">さがす</button>
-<button onclick="clearSearch()">×</button>
+<div class="search-box">
+    <input id="searchName">
+    <button class="clear-button" onclick="clearSearch()">×</button>
+</div>
 
+<button onclick="searchTrainer()">さがす</button>
 <div id="result"></div>
    
 <button id="backToTop">↑ 上へ</button>
