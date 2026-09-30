@@ -273,7 +273,9 @@ function searchTrainer() {
 
     const searchName = hiraToKata(input);
 
-    const matchedTrainers = trainers.filter(t => t["名前"] === searchName);
+    const matchedTrainers = trainers.filter(
+    t => hiraToKata(t["名前"]) === searchName
+);
 
    matchedTrainers.sort((a, b) => {
     return Number(a["表示順"]) - Number(b["表示順"]);
@@ -327,16 +329,14 @@ ${pokemon}<br>
 
     let giftText = "";
 
-    if(trainer["くれるもの"]){
-        giftText = `<p>${trainer["くれるもの"]} をくれるよ</p>`;
-    }
+    if (trainer["くれるもの"].trim()) {
+    giftText = `<p>${trainer["くれるもの"].trim()}をくれるよ</p>`;
+}
 
    let itemText = "";
 
-if(trainer["もちもの"]) {
-
-    itemText = `<p>${trainer["もちもの"]}をもってるよ</p>`;
-
+if (trainer["もちもの"].trim()) {
+    itemText = `<p>${trainer["もちもの"].trim()}をもってるよ</p>`;
 }
 
         html += `
