@@ -131,9 +131,6 @@ button {
     vertical-align:middle;
     margin-right:5px;
 }
-    vertical-align:middle;
-    margin-right:5px;
-}
 
 .trainer-name{
     margin-bottom:15px;
@@ -301,12 +298,17 @@ matchedTrainers.forEach(trainer => {
     ? seriesInfo["シリーズアイコン"]
     : "";
 
+   // 手持ち1が「＊」なら、トレーナーではない
+   const isNotTrainer = trainer["手持ち1"] === "*";
+
     let pokemonList = "";
 
     for(let i = 1; i <= 6; i++) {
         const pokemon = trainer[`手持ち${i}`] || trainer[`手持ち${i} `] || trainer[`手持ち${i}　`];
 
-        if(pokemon){
+       //　「*」は判定用なので、手持ちとして表示しない
+       if(pokemon && pokemon !== "*") {
+          
             pokemonList += `
 <img src="images/ui/monsterball.png" width="16" style="vertical-align:middle;">
 ${pokemon}<br>
@@ -329,12 +331,21 @@ ${pokemon}<br>
         giftText = `<p>${trainer["くれるもの"]} をくれるよ</p>`;
     }
 
+   let itemText = "";
+
+if(trainer["もちもの"]) {
+
+    itemText = `<p>${trainer["もちもの"]}をもってるよ</p>`;
+
+}
+
         html += `
 <div class="trainer-card">
 
     <div class="location">
 
-    <div class="location">
+    ${isNotTrainer ? "トレーナーではないけど<br>" : ""}
+    
  <img
     src="images/series/${seriesIcon}"
     class="series-icon"
@@ -364,11 +375,10 @@ ${pokemon}<br>
             ${pokemonSection}
         </div>
 
-    </div>
-
    </div>
 
     ${giftText}
+    ${itemText}
 
 </div>
         
@@ -392,7 +402,7 @@ document.getElementById("backToTop").addEventListener("click", function() {
 
 <footer style="margin-top:50px;font-size:10px;color:gray;text-align:center;">
 
-  <p>最終更新日：2026/09/30　登録トレーナー：3980人</p>
+  <p>最終更新日：2026/10/01　登録トレーナー：3980人</p>
   <p>
   作成：
   <a href="https://github.com/shdayo365" target="_blank">
